@@ -2,11 +2,14 @@
 
 wget https://s3.amazonaws.com/ds2002-resources/labs/lab3-bundle.tar.gz
 
+TSV=$(ls | grep tsv)
 tar -xzvf lab3-bundle.tar.gz
 
 # awk can remove spaces
-awk '!/^[[:space:]]*$/' myfile.tsv
+awk '!/^[[:space:]]*$/' $TSV
 
-awk 'BEGIN { FS="\t"; OFS="," } {$1=$1; print}' file.tsv > file.csv
+sed 's/'$'\t''/,/g' $TSV  > file.csv
 
-tar -czvf converted-archive.tar.gz
+echo  tail -n +2 myfile.tsv | wc -l 
+
+tar -czvf converted-archive.tar.gz file.csv
