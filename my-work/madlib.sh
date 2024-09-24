@@ -12,3 +12,4 @@ read -p "6. Name a song: " NOUN6
 read -p "7. Name a hobby " NOUN7
 read -p "8. Name a type of bed " NOUN8
 
+echo "Tim played" NOUN1
